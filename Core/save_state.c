@@ -1515,7 +1515,7 @@ bool GB_is_save_state(const char *path)
         }
     }
     
-    fseek(f, -sizeof(magic), SEEK_END);
+    fseek(f, -(long)sizeof(magic), SEEK_END);
     fread(&magic, sizeof(magic), 1, f);
     if (magic == BE32('BESS')) {
         ret = true;
