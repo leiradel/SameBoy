@@ -50,6 +50,7 @@ ifeq ($(platform), win)
 endif
 
 CORE_DIR     = ..
+.PRECIOUS: $(CORE_DIR)/libretro/cgb0_boot.c $(CORE_DIR)/libretro/mgb_boot.c
 
 TARGET_NAME  = sameboy
 LIBM		    = -lm
