@@ -301,7 +301,7 @@ TARGET := $(CORE_DIR)/build/bin/$(TARGET)
 # To force use of the Unix version instead of the Windows version
 MKDIR := $(shell which mkdir)
 
-LDFLAGS += $(LIBM)
+LDFLAGS += $(LIBM) -Wl,--pdb=$(basename $@).pdb
 
 ifeq ($(DEBUG), 1)
    CFLAGS += -O0 -g
@@ -311,7 +311,7 @@ endif
 
 include Makefile.common
 
-CFLAGS += -DGB_VERSION=\"$(VERSION)\"
+CFLAGS += -DGB_VERSION=\"$(VERSION)\" -g -gcodeview
 
 OBJECTS := $(patsubst $(CORE_DIR)/%.c,$(CORE_DIR)/build/obj/%_libretro.c.o,$(SOURCES_C))
 
